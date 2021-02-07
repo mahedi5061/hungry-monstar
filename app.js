@@ -49,8 +49,11 @@
     `;
     mealDiv.innerHTML=mealInfo;
     mainDiv.appendChild(mealDiv);
+    document.getElementById('input-content').value='';
 
     })
+    
+    
 })
 
  const displayMealDetails=(mealsInfo=>{
@@ -68,10 +71,22 @@ const displayRenderMealDetails=(info=>{
         <img src="${info.strMealThumb}">
         <h1>${info.strMeal}</h1>
         <h4>Ingredients</h4>
-        <p>${info.strInstructions}</p>
+        <ul><li>${info.strIngredient1}</li>
+        <li>${info.strIngredient2}</li>
+        <li>${info.strIngredient3}</li>
+        <li>${info.strIngredient4}</li>
+        <li>${info.strIngredient5}</li>
+        <li>${info.strIngredient6}</li>
+        <li>${info.strIngredient7}</li>
+        <li>${info.strIngredient8}</li>
+        <li>${info.strIngredient9}</li>
+        <li>${info.strIngredient10}</li>
+
+        </ul>
     `;
     detailsDiv.innerHTML=detailsInfo;
-     
+    document.getElementById('container').style.display="none";
+       
 })
 
 
