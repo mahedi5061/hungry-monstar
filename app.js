@@ -1,9 +1,14 @@
     document.getElementById('button-content').addEventListener('click',function(){
         const inputValue=document.getElementById('input-content').value;
+        fullNameData(inputValue);
+        if(inputValue==''){
+            alert('please select an item');
+        }
+        else{
+            fullNameData(inputValue); //This function is called fullName search API.
+            firstNameData(inputValue); //This function is called firstName search API.
+        }
         
-        fullNameData(inputValue); //This function is called fullName search API.
-        firstNameData(inputValue); //This function is called firstName search API.
-
     })
 
  // This function is for fullName search data result.
@@ -13,10 +18,8 @@
         fetch(url)
         .then(res=>res.json())
         .then(data=>{
-        displayMeal(data.meals)
-        // if(mealName !=data.meals[0].strMeal){
-        //     alert('This item is not available');
-        // }
+         displayMeal(data.meals);
+         
 })
  })
 
@@ -28,10 +31,8 @@
     fetch(url)
     .then(res=>res.json())
     .then(data=>{
-        displayMeal(data.meals)
-    // if(mealName !=data.meals[0].strMeal){
-    //     alert('This item is not available');
-    // }
+    displayMeal(data.meals)
+   
 })
 })
 
@@ -50,8 +51,9 @@
     mealDiv.innerHTML=mealInfo;
     mainDiv.appendChild(mealDiv);
     document.getElementById('input-content').value='';
-
+    
     })
+    
     
     
 })
@@ -88,6 +90,8 @@ const displayRenderMealDetails=(info=>{
     document.getElementById('container').style.display="none";
        
 })
+
+ 
 
 
 
