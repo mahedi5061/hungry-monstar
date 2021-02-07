@@ -16,3 +16,19 @@
     padding: 10px;
     
 }
+.common-container{
+    cursor: pointer;
+}
+.details-formate{
+    margin-left: 35%;
+    padding-bottom: 3%;
+}
+.details-formate img{
+    width:500px;
+    height: 350px;
+    border-radius: 20px;
+}
+.details-formate p{
+    width: 500px;
+    text-align: justify;
+}

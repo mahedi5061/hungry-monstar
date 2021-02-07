@@ -1,12 +1,12 @@
     document.getElementById('button-content').addEventListener('click',function(){
         const inputValue=document.getElementById('input-content').value;
+        
         fullNameData(inputValue); //This function is called fullName search API.
         firstNameData(inputValue); //This function is called firstName search API.
-        
-         
+
     })
 
-    //This function is for fullName search data result.
+ // This function is for fullName search data result.
 
         const fullNameData=(fullNameMeal=>{
         const url=`https://www.themealdb.com/api/json/v1/1/search.php?s=${fullNameMeal}`
@@ -37,53 +37,42 @@
 
 
 
-        const displayMeal=(mealItem=>{ 
-        const mainDiv=document.getElementById('container');
-        mealItem.forEach(meal => {
-        const mealDiv=document.createElement('div');
-        mealDiv.className='meal';
-        const mealInfo=`
-        <img src="${meal.strMealThumb}">
-        <h4 class="country-container">${meal.strMeal}</h4>
+    const displayMeal=(mealItem=>{ 
+    const mainDiv=document.getElementById('container');
+    mealItem.forEach(meal => {
+    const mealDiv=document.createElement('div');
+    mealDiv.className='meal';
+    const mealInfo=`
+        <img onClick="displayMealDetails('${meal.idMeal}')" class="common-container" src="${meal.strMealThumb}">
+        <h4 onClick="displayMealDetails('${meal.idMeal}')" class="common-container">${meal.strMeal}</h4>
             
-    `
+    `;
     mealDiv.innerHTML=mealInfo;
     mainDiv.appendChild(mealDiv);
 
     })
 })
 
-// const displayMealsDetails=(mealsInfo=>{
-//     const url=`https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata${mealsInfo}`;
-//      fetch(url)
-//      .then(res=>res.json())
-//      .then(data=>displayRenderDetails(data.meals))
-// })
+ const displayMealDetails=(mealsInfo=>{
+    const url=`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealsInfo}`;
+     fetch(url)
+     .then(res=>res.json())
+     .then(data=>{
+        displayRenderMealDetails(data.meals[0]);
+     })
+})
 
-// const displayCountriesDetails=(countriesInfo=>{
-//     const url=`https://restcountries.eu/rest/v2/name/${countriesInfo}`;
-//      fetch(url)
-//      .then(res=>res.json())
-//      .then(data=>displayRenderDetails(data[0]))
-// })
-
-// const displayRenderDetails=(info=>{
-//     const detailsDiv=document.getElementById('details');
-//     const detailsInfo=`
-//         <h1 class="country-container">${info.name}</h1>
-//         <p class="capital-container">Population: ${info.population}</p>
-//         <p class="capital-container">Area: ${info.area}</p>
-//         <img src="${info.flag}">
-//     `;
-//     detailsDiv.innerHTML=detailsInfo;
+const displayRenderMealDetails=(info=>{
+    const detailsDiv=document.getElementById('details-info');
+    const detailsInfo=`
+        <img src="${info.strMealThumb}">
+        <h1>${info.strMeal}</h1>
+        <h4>Ingredients</h4>
+        <p>${info.strInstructions}</p>
+    `;
+    detailsDiv.innerHTML=detailsInfo;
      
-// })
-
-
-
-
- 
-
+})
 
 
 
