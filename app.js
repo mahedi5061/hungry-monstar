@@ -42,7 +42,7 @@
 })
 
 
-
+//This display function.
     const displayMeal=(mealItem=>{ 
     const mainDiv=document.getElementById('container');
     mealItem.forEach(meal => {
@@ -62,6 +62,7 @@
     
     
 })
+//This is single meals Api function.
 
  const displayMealDetails=(mealsInfo=>{
     const url=`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealsInfo}`;
@@ -71,7 +72,7 @@
         displayRenderMealDetails(data.meals[0]);
      })
 })
-
+//This is single meals results & Ingredients results.
 const displayRenderMealDetails=(info=>{
     const detailsDiv=document.getElementById('details-info');
     const detailsInfo=`
