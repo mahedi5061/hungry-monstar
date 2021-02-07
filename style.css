@@ -1,0 +1,8 @@
+#container img{
+    width: 50px;
+}
+.meal{
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
