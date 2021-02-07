@@ -1,12 +1,17 @@
     document.getElementById('button-content').addEventListener('click',function(){
         const inputValue=document.getElementById('input-content').value;
-        fullNameData(inputValue);
+
         if(inputValue==''){
             alert('please select an item');
         }
         else{
-            fullNameData(inputValue); //This function is called fullName search API.
-            firstNameData(inputValue); //This function is called firstName search API.
+            if(inputValue.length<2 && inputValue.length>0){
+                firstNameData(inputValue);    //This function is called firstName search API.
+            }
+            else{
+                fullNameData(inputValue);  //This function is called fullName search API.
+            }
+               
         }
         
     })
