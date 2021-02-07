@@ -1,8 +1,18 @@
 #container img{
-    width: 50px;
+    width: 300px;
+    padding-top: 15px;
 }
 .meal{
-    width: 300px;
+    width: 350px;
     border: 1px solid black;
     border-radius: 20px;
+}
+#container{
+    display: grid;
+    grid-template-columns:repeat(3,1fr);
+    margin-left:10%;
+    text-align: center;
+    grid-gap:40px;
+    padding: 10px;
+    
 }

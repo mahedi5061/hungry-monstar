@@ -1,31 +1,64 @@
-document.getElementById('button-content').addEventListener('click',function(){
-     
-    
-    getData(post);
+    document.getElementById('button-content').addEventListener('click',function(){
+        const inputValue=document.getElementById('input-content').value;
+        fullNameData(inputValue); //This function is called fullName search API.
+        firstNameData(inputValue); //This function is called firstName search API.
+        
+         
+    })
+
+    //This function is for fullName search data result.
+
+        const fullNameData=(fullNameMeal=>{
+        const url=`https://www.themealdb.com/api/json/v1/1/search.php?s=${fullNameMeal}`
+        fetch(url)
+        .then(res=>res.json())
+        .then(data=>{
+        displayMeal(data.meals)
+        // if(mealName !=data.meals[0].strMeal){
+        //     alert('This item is not available');
+        // }
+})
+ })
+
+
+//This function is for firstName search data result.
+
+ const firstNameData=(firstNameMeal=>{
+    const url=`https://www.themealdb.com/api/json/v1/1/search.php?f=${firstNameMeal}`
+    fetch(url)
+    .then(res=>res.json())
+    .then(data=>{
+        displayMeal(data.meals)
+    // if(mealName !=data.meals[0].strMeal){
+    //     alert('This item is not available');
+    // }
+})
 })
 
- const getData=(dataInfo=>{
-    fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
-    .then(res=>res.json())
-    .then(data=>displayMeal(data.categories))
- 
-})
-        const displayMeal=(meal=>{   
+
+
+        const displayMeal=(mealItem=>{ 
         const mainDiv=document.getElementById('container');
-        meal.forEach(mealItem => {
+        mealItem.forEach(meal => {
         const mealDiv=document.createElement('div');
         mealDiv.className='meal';
         const mealInfo=`
-        <img src="${mealItem.strCategoryThumb}">
-        <h3 class="country-container">${mealItem.strCategory}</h3>
-       
-        
+        <img src="${meal.strMealThumb}">
+        <h4 class="country-container">${meal.strMeal}</h4>
+            
     `
     mealDiv.innerHTML=mealInfo;
     mainDiv.appendChild(mealDiv);
 
     })
 })
+
+// const displayMealsDetails=(mealsInfo=>{
+//     const url=`https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata${mealsInfo}`;
+//      fetch(url)
+//      .then(res=>res.json())
+//      .then(data=>displayRenderDetails(data.meals))
+// })
 
 // const displayCountriesDetails=(countriesInfo=>{
 //     const url=`https://restcountries.eu/rest/v2/name/${countriesInfo}`;
