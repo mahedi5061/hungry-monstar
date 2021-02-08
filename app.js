@@ -1,8 +1,11 @@
-    document.getElementById('button-content').addEventListener('click',function(){
-        const inputValue=document.getElementById('input-content').value;
-
+     const searchField=()=>{
+     const inputValue=document.getElementById('input-content').value;
+   
         if(inputValue==''){
-            alert('please select an item');
+             
+            const emptyItem=document.getElementById('empty-item');
+            emptyItem.innerText='Please Select a item to Search.';
+            
         }
         else{
             if(inputValue.length<2 && inputValue.length>0){
@@ -13,8 +16,8 @@
             }
                
         }
-        
-    })
+    }
+    
 
  // This function is for fullName search data result.
 
@@ -23,9 +26,10 @@
         fetch(url)
         .then(res=>res.json())
         .then(data=>{
-         displayMeal(data.meals);
-         
-})
+         displayMeal(data.meals);      
+
+        })
+        .catch(error => errorDisplay('Something went to wrong!!'))  //handle the error message.
  })
 
 
@@ -39,12 +43,15 @@
     displayMeal(data.meals)
    
 })
+    .catch(error => errorDisplay('Something went to wrong!!')) //handle the error message.
 })
 
 
 //This display function.
     const displayMeal=(mealItem=>{ 
     const mainDiv=document.getElementById('container');
+    document.getElementById('empty-item').innerText=''; 
+    mainDiv.innerHTML='';
     mealItem.forEach(meal => {
     const mealDiv=document.createElement('div');
     mealDiv.className='meal';
@@ -55,8 +62,7 @@
     `;
     mealDiv.innerHTML=mealInfo;
     mainDiv.appendChild(mealDiv);
-    document.getElementById('input-content').value='';
-    
+    document.getElementById('input-content').value='';   
     })
     
     
@@ -94,9 +100,14 @@ const displayRenderMealDetails=(info=>{
     `;
     detailsDiv.innerHTML=detailsInfo;
     document.getElementById('container').style.display="none";
+    firstNameData(inputValue);
        
 })
-
+//This function is to handle the error message.
+const errorDisplay=(error=>{
+    const errorMassage=document.getElementById('error-msg');
+    const errorDisplay= error;
+})
  
 
 

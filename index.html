@@ -10,17 +10,21 @@
 </head>
 <body>
     <div class="main">
+        
         <form class="col-md-6 m-auto py-5">
             <div class="input-group mb-3">
                 <input id="input-content" type="text" class="form-control" placeholder="Search for meal">
                 <div class="input-group-append">
-                    <button id="button-content" type="button" class="btn btn-success">Search</button>
+                    <button  onclick="searchField()" id="button-content" type="button" class="btn btn-success">Search</button>
                 </div>
             </div>
         </form>
+        <h4 id="error-msg" class="text-danger"> </h4>
+        <h4 id="empty-item" class="text-danger emptyItemSearch"> </h4>
         <div id="details-info" class="details-formate">
             
         </div>
+        
         <div id="container">
             
         </div>
